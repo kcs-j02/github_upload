@@ -52,9 +52,11 @@ Please use the following feedback channels:
 
 We will get back to you as soon as possible.
 
+<div style="page-break-before: always;"></div>
 
-## result!!
+## Result
 
+```text
 linux x86 is little endian!
 sizeof(null): 8
 sizeof(char): 1
@@ -94,4 +96,4 @@ data_as_int[2]: 99
 
 location: 00007FF7D5CB4011, value: 55443322
 float location: 00007FF7D5CB4011, value: 13482743300096.000000
-
+```
