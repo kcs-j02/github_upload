@@ -1,0 +1,4 @@
+*.swp
+build
+.cache
+sdkconfig.old

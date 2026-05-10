@@ -1,0 +1,6 @@
+CompileFlags:
+  CompilationDatabase: build
+  Remove: [-m*, -f*]
+  #Remove: [-mlongcalls, -fno-shrink-wrap, -fstrict-volatile-bitfields, -fno-tree-switch-conversion, --target=* -march=*, -mabi=*, -mcpu=*]
+  #Add: [--target=xtensa-none-none-elf]
+  #Add: [-march=xtensa, -triple=xtensa-unknown-unknown-elf]
