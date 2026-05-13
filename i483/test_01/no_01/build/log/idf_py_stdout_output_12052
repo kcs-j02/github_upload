@@ -1,0 +1,114 @@
+Command: C:\Espressif\tools\python\v6.0.1\venv\Scripts\python.exe C:\esp\v6.0.1\esp-idf\tools/idf_monitor.py -p COM5 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Users\kobat\Documents\class\I483\test_01\no_01\build\rpr0521_test.elf C:\Users\kobat\Documents\class\I483\test_01\no_01\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\tools\python\v6.0.1\venv\Scripts\python.exe' 'C:\esp\v6.0.1\esp-idf\tools\idf.py' '-p' 'COM5'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xc (SPI_FAST_FLASH_BOOT)
+Saved PC:0x403837c6
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5830,len:0x155c
+load:0x403cbf10,len:0xce0
+load:0x403ce710,len:0x2fbc
+entry 0x403cbf1a
+[0;32mI (24) boot: ESP-IDF v6.0.1 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time May 11 2026 23:03:24[0m
+[0;32mI (25) boot: chip revision: v0.3[0m
+[0;32mI (25) boot: efuse block revision: v1.1[0m
+[0;32mI (28) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (39) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (46) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (59) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (72) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=08e8ch ( 36492) map[0m
+[0;32mI (89) esp_image: segment 1: paddr=00018eb4 vaddr=3fc8b000 size=018e8h (  6376) load[0m
+[0;32mI (92) esp_image: segment 2: paddr=0001a7a4 vaddr=40380000 size=05874h ( 22644) load[0m
+[0;32mI (102) esp_image: segment 3: paddr=00020020 vaddr=42000020 size=12e14h ( 77332) map[0m
+[0;32mI (117) esp_image: segment 4: paddr=00032e3c vaddr=40385874 size=055a8h ( 21928) load[0m
+[0;32mI (122) esp_image: segment 5: paddr=000383ec vaddr=50000000 size=00024h (    36) load[0m
+[0;32mI (125) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (126) boot: Disabling RNG early entropy source...[0m
+[0;32mI (142) cpu_start: Unicore app[0m
+[0;32mI (151) cpu_start: GPIO 20 and 21 are used as console UART I/O pins[0m
+[0;32mI (151) cpu_start: Pro cpu start user code[0m
+[0;32mI (151) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (153) app_init: Application information:[0m
+[0;32mI (157) app_init: Project name:     rpr0521_test[0m
+[0;32mI (161) app_init: App version:      1[0m
+[0;32mI (164) app_init: Compile time:     May 11 2026 23:03:03[0m
+[0;32mI (169) app_init: ELF file SHA256:  76621c365...[0m
+[0;32mI (174) app_init: ESP-IDF:          v6.0.1[0m
+[0;32mI (178) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (181) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (185) efuse_init: Chip rev:         v0.3[0m
+[0;32mI (189) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (196) heap_init: At 3FC8D890 len 00032770 (201 KiB): RAM[0m
+[0;32mI (201) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (207) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (213) heap_init: At 50000024 len 00001FC4 (7 KiB): RTCRAM[0m
+[0;32mI (219) spi_flash: detected chip: generic[0m
+[0;32mI (222) spi_flash: flash io: dio[0m
+[0;33mW (225) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (237) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (247) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (253) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (260) main_task: Started on CPU0[0m
+[0;32mI (260) main_task: Calling app_main()[0m
+ESP-IDF RPR-0521RS start
+I2C init OK
+RPR-0521RS init OK
+ALS0=305  ALS1=43  Light=432.30 lux
+ALS0=310  ALS1=44  Light=438.83 lux
+ALS0=309  ALS1=44  Light=437.15 lux
+ALS0=310  ALS1=44  Light=438.83 lux
+ALS0=310  ALS1=44  Light=438.83 lux
+ALS0=287  ALS1=40  Light=407.65 lux
+ALS0=282  ALS1=40  Light=399.24 lux
+ALS0=284  ALS1=40  Light=402.61 lux
+ALS0=291  ALS1=41  Light=412.51 lux
+ALS0=297  ALS1=42  Light=420.72 lux
+ALS0=1  ALS1=0  Light=1.68 lux
+ALS0=1  ALS1=0  Light=1.68 lux
+ALS0=1  ALS1=0  Light=1.68 lux
+ALS0=1  ALS1=0  Light=1.68 lux
+ALS0=188  ALS1=27  Light=265.54 lux
+ALS0=330  ALS1=47  Light=466.84 lux
+ALS0=331  ALS1=47  Light=468.52 lux
+ALS0=331  ALS1=47  Light=468.52 lux
+ALS0=331  ALS1=47  Light=468.52 lux
+ALS0=336  ALS1=48  Light=475.06 lux
+ALS0=337  ALS1=48  Light=476.74 lux
+ALS0=130  ALS1=19  Light=183.00 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=343  ALS1=49  Light=484.95 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=342  ALS1=49  Light=483.27 lux
+ALS0=328  ALS1=47  Light=463.48 lux
+ALS0=341  ALS1=49  Light=481.59 lux
+ALS0=62  ALS1=9  Light=87.39 lux
+ALS0=66  ALS1=10  Light=92.24 lux
+ALS0=134  ALS1=20  Light=187.85 lux
+ALS0=306  ALS1=44  Light=432.10 lux
+ALS0=297  ALS1=43  Light=418.84 lux
+ALS0=286  ALS1=41  Light=404.10 lux
+ALS0=265  ALS1=39  Light=372.53 lux
+ALS0=343  ALS1=49  Light=484.95 lux
+ALS0=348  ALS1=50  Light=491.49 lux
+ALS0=348  ALS1=50  Light=491.49 lux
+ALS0=349  ALS1=50  Light=493.17 lux
+ALS0=349  ALS1=50  Light=493.17 lux
+ALS0=349  ALS1=50  Light=493.17 lux
+ALS0=348  ALS1=50  Light=491.49 lux
+ALS0=349  ALS1=50  Light=493.17 lux

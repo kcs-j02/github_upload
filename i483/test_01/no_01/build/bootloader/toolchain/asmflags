@@ -1,0 +1,3 @@
+"-specs=C:/Users/kobat/Documents/class/I483/test_01/no_01/build/bootloader/specs/picolibc.specs"
+-march=rv32imc_zicsr_zifencei
+-mtune=esp-base
