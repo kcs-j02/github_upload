@@ -262,10 +262,7 @@ def read_dps310():
     return pressure, temp
 
 
-# =====================
-# Main
-# =====================
-
+# main
 init_sensors()
 connect_wifi()
 
