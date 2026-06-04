@@ -33,7 +33,7 @@ CO2_THRESHOLD = 700
 
 consumer = KafkaConsumer(
     TOPIC_BH1750_ILLUMINATION,
-    TOPIC_BH1750_TEMPERATURE,   # 課題文に temperature とあるため保険で受信
+    TOPIC_BH1750_TEMPERATURE,
     TOPIC_SCD41_CO2,
     bootstrap_servers=KAFKA_BROKER,
     auto_offset_reset="latest",
@@ -85,6 +85,8 @@ while True:
             # BH1750の明るさデータ
             if topic == TOPIC_BH1750_ILLUMINATION:
                 bh1750_values.append((now, value))
+            elif topic == TOPIC_BH1750_TEMPERATURE:
+                pass
 
             # SCD41のCO2データ
             elif topic == TOPIC_SCD41_CO2:
@@ -99,6 +101,12 @@ while True:
                     producer.flush()
 
                     print("publish:", TOPIC_CO2_THRESHOLD, current_state)
+
+                    if current_state == "yes":
+                        print("LED should blink")
+                    else:
+                        print("LED should turn off")
+
                     last_co2_state = current_state
 
     # 5分より古いBH1750データを削除
@@ -117,5 +125,3 @@ while True:
             print("publish:", TOPIC_BH1750_AVG, avg_str)
 
         last_avg_publish_time = now
-    
-    # print("－－－－－－－－－－")th

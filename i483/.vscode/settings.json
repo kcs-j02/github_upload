@@ -1,3 +1,16 @@
 {
-  "cmake.sourceDirectory": "G:/マイドライブ/github_upload/i483/hello_ctypes"
+    "cmake.sourceDirectory": "G:/マイドライブ/github_upload/i483/hello_ctypes",
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none"
+    },
+    "python.terminal.activateEnvironment": false,
+    "micropico.openOnStart": true,
+    "python.analysis.typeshedPaths": [
+        "~/.micropico-stubs/included"
+    ],
+    "python.analysis.extraPaths": [
+        "~/.micropico-stubs/included"
+    ]
 }

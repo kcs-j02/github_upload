@@ -1,0 +1,219 @@
+\documentclass[a4paper,11pt,lualatex,ja=standard]{bxjsarticle}
+
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage{graphicx}
+% url
+\usepackage{hyperref}
+
+% ===== cover command =====
+\newcommand{\cover}[3]{
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \begin{center}
+    {\LARGE #1}\\[2cm]
+    {\Large #2}\\[3cm]
+    {\large 氏名：#3}\\[1cm]
+    {\large 学籍番号：s2510063}
+  \end{center}
+  \newpage
+}
+% =========================
+
+\begin{document}
+
+% ===== cover =====
+\cover{I483}{report2}{小林智輝}
+% =================
+
+\title{レポートタイトル}
+\author{氏名}
+\date{\today}
+
+
+\section{実行環境}
+
+本課題では，MCUで取得したセンサーデータをMQTTで公開し，PC側でMQTTおよびKafkaを用いてデータの受信，処理，公開を行った。使用した実行環境を以下に示す。
+
+\begin{itemize}
+\item MCU：Raspberry Pi Pico W
+\item MCU側開発環境：Thonny
+\item MCU側言語：MicroPython
+\item PC側開発環境：Visual Studio Code
+\item PC側言語：Python 3.12.10
+\item 通信方式：MQTT，Kafka
+\item MQTTブローカ：150.65.230.59
+\item MQTTポート：1883
+\item 学生番号：s2510063
+\item 使用ライブラリ：umqtt.simple，paho-mqtt，kafka-python
+\end{itemize}
+
+また，本課題で使用したセンサーを以下に示す。
+
+\begin{itemize}
+\item SCD41：CO2，温度，湿度
+\item BH1750：照度
+\item RPR-0521RS：照度，赤外線照度
+\item DPS310：気圧，温度
+\end{itemize}
+
+\section{開発内容}
+
+\subsection{MQTTによるセンサーデータの公開}
+
+課題1(a)では，MCUで取得したセンサーデータをMQTTで公開した。MQTTトピックは，課題で指定された以下の形式に従った。
+
+\begin{verbatim}
+i483/sensors/STUDENT/SENSOR/DATA_TYPE
+\end{verbatim}
+
+ここで，\texttt{STUDENT}には自身の学生番号である\texttt{s2510063}を用いた。また，データは文字列形式で送信し，小数第2位までに整形した。
+
+実行時の出力例を以下に示す。
+
+\begin{verbatim}
+publish: b'i483/sensors/s2510063/SCD41/co2' 1316.00
+publish: b'i483/sensors/s2510063/SCD41/temperature' 26.34
+publish: b'i483/sensors/s2510063/SCD41/humidity' 42.65
+publish: b'i483/sensors/s2510063/BH1750/illumination' 586.67
+publish: b'i483/sensors/s2510063/RPR0521/illumination' 853.65
+publish: b'i483/sensors/s2510063/RPR0521/infrared_illumination' 99.00
+publish: b'i483/sensors/s2510063/DPS310/air_pressure' 998.30
+publish: b'i483/sensors/s2510063/DPS310/temperature' 28.55
+\end{verbatim}
+
+この結果から，SCD41，BH1750，RPR-0521RS，DPS310で取得した各データを，指定されたMQTTトピックへ公開できていることを確認した。
+
+\subsection{MQTTによるデータ受信}
+
+課題1(b)では，課題1(a)で公開されたデータをMQTTで受信するPC側プログラムを作成した。購読トピックには以下を指定した。
+
+\begin{verbatim}
+i483/sensors/s2510063/+/+
+\end{verbatim}
+
+この指定により，自身の学生番号に対応する全センサーのデータをまとめて受信できるようにした。
+
+実行時の出力例を以下に示す。
+
+\begin{verbatim}
+MQTT connected: 0
+Subscribe topic: i483/sensors/s2510063/+/+
+2026-05-31 10:49:41 i483/sensors/s2510063/SCD41/co2 1146.00
+2026-05-31 10:49:41 i483/sensors/s2510063/SCD41/temperature 27.68
+2026-05-31 10:49:41 i483/sensors/s2510063/SCD41/humidity 39.69
+2026-05-31 10:49:41 i483/sensors/s2510063/BH1750/illumination 271.67
+2026-05-31 10:49:41 i483/sensors/s2510063/RPR0521/illumination 6.53
+2026-05-31 10:49:41 i483/sensors/s2510063/RPR0521/infrared_illumination 1.00
+2026-05-31 10:49:41 i483/sensors/s2510063/DPS310/air_pressure 998.05
+2026-05-31 10:49:41 i483/sensors/s2510063/DPS310/temperature 29.90
+\end{verbatim}
+
+出力結果より，MQTTブローカへの接続に成功し，複数のセンサーデータを継続的に受信できていることを確認した。
+
+\subsection{Kafkaによるデータ処理と公開}
+
+課題1(c)では，Kafkaを利用して，BH1750の照度データとSCD41のCO2データを受信し，処理結果を別のKafkaトピックへ公開するプログラムを作成した。
+
+購読したKafkaトピックを以下に示す。
+
+\begin{verbatim}
+i483-sensors-s2510063-BH1750-illumination
+i483-sensors-s2510063-BH1750-temperature
+i483-sensors-s2510063-SCD41-co2
+\end{verbatim}
+
+本プログラムでは，以下の2つの処理を行った。
+
+\begin{itemize}
+\item BH1750の照度データについて，最近5分間の値を用いてRolling Averageを計算する。
+\item SCD41のCO2濃度が700ppmを超えた場合，Threshold Detectionとして\texttt{yes}を公開する。
+\end{itemize}
+
+実行時の出力例を以下に示す。
+
+\begin{verbatim}
+Kafka connected
+Subscribe:
+i483-sensors-s2510063-BH1750-illumination
+i483-sensors-s2510063-BH1750-temperature
+i483-sensors-s2510063-SCD41-co2
+
+receive: i483-sensors-s2510063-SCD41-co2 1166.00
+publish: i483-actuators-s2510063-co2_threshold-crossed yes
+
+receive: i483-sensors-s2510063-BH1750-illumination 432.50
+receive: i483-sensors-s2510063-BH1750-illumination 416.67
+publish: i483-sensors-s2510063-BH1750_avg-illumination 424.59
+\end{verbatim}
+
+この結果から，Kafkaを用いてセンサーデータを受信し，Rolling AverageおよびThreshold Detectionの処理結果を，指定されたKafkaトピックへ公開できていることを確認した。
+
+\subsection{Threshold Detectionに基づくLED点滅}
+
+課題1(d)では，課題1(c)で行ったThreshold Detectionの結果に基づいて，MCUのLEDを点滅させた。
+
+CO2濃度が700ppmを超えた場合，Kafkaトピック
+
+\begin{verbatim}
+i483-actuators-s2510063-co2_threshold-crossed
+\end{verbatim}
+
+に\texttt{yes}を公開する。その後，この情報はMQTTトピック
+
+\begin{verbatim}
+i483/actuators/s2510063/co2_threshold_crossed
+\end{verbatim}
+
+へ変換される。MCU側ではこのMQTTトピックを購読し，受信したメッセージが\texttt{yes}であった場合にLEDを点滅させるようにした。
+
+実行時の出力例を以下に示す。
+
+\begin{verbatim}
+Kafka connected
+Subscribe:
+i483-sensors-s2510063-BH1750-illumination
+i483-sensors-s2510063-BH1750-temperature
+i483-sensors-s2510063-SCD41-co2
+-------------------------------
+
+receive: i483-sensors-s2510063-SCD41-co2 1132.00
+publish: i483-actuators-s2510063-co2_threshold-crossed yes
+LED should blink
+
+receive: i483-sensors-s2510063-BH1750-illumination 400.00
+receive: i483-sensors-s2510063-SCD41-co2 1116.00
+receive: i483-sensors-s2510063-BH1750-illumination 399.17
+publish: i483-sensors-s2510063-BH1750_avg-illumination 399.59
+\end{verbatim}
+
+この結果から，CO2濃度が700ppmを超えたことを検出し，Threshold Detectionの結果として\texttt{yes}を公開できていることを確認した。また，この結果をMCU側で受信し，LEDを点滅させる処理を実装した。
+
+\section{運用}
+
+課題2(a)では，課題1(a)で作成したMQTTによるセンサーデータ公開プログラムと，課題1(c)で作成したKafkaによる処理プログラムを継続的に運用した。
+
+MCU側では，センサーから15秒ごとにデータを取得し，MQTTブローカへ公開した。PC側では，Kafkaを用いてデータを受信し，Rolling AverageおよびThreshold Detectionの処理を継続して行った。
+
+運用中，以下の処理が継続的に行われていることを確認した。
+
+\begin{itemize}
+\item MQTTによるセンサーデータの公開
+\item MQTTによるセンサーデータの受信
+\item Kafkaによる照度データおよびCO2データの受信
+\item BH1750照度データのRolling Averageの計算と公開
+\item SCD41のCO2濃度に対するThreshold Detectionの実行
+\item Threshold Detectionの結果に基づくMCUのLED点滅
+\end{itemize}
+
+以上より，MQTTとKafkaを用いたPub/Sub型通信により，センサーデータの収集，処理，およびアクチュエータ制御を継続的に実行できることを確認した。
+
+\section{まとめ}
+
+本課題では，MCUで取得したセンサーデータをMQTTで公開し，PC側でMQTTおよびKafkaを用いてデータの受信，処理，公開を行った。MQTTでは，指定されたトピック形式に従って複数のセンサーデータを公開し，PC側で受信できることを確認した。
+
+また，Kafkaでは，BH1750の照度データに対するRolling Averageと，SCD41のCO2濃度に対するThreshold Detectionを実装した。さらに，Threshold Detectionの結果をMCU側で受信し，LEDを点滅させることで，Pub/Sub型通信を用いたセンサーデータ処理とアクチュエータ制御の一連の流れを確認できた。
+
+\end{document}
