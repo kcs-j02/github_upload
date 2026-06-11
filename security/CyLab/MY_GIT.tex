@@ -1,0 +1,47 @@
+\documentclass[a4paper,11pt,lualatex,ja=standard]{bxjsarticle}
+
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage{graphicx}
+% url
+\usepackage{hyperref}
+
+% ===== cover command =====
+\newcommand{\cover}[3]{
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \begin{center}
+    {\LARGE #1}\\[2cm]
+    {\Large #2}\\[3cm]
+    {\large 氏名：#3}\\[1cm]
+    % {\large 学籍番号：s2510063}
+  \end{center}
+  \newpage
+}
+% =========================
+
+\begin{document}
+
+% ===== cover =====
+\cover{MY GIT}{CyLab}{yukimi}
+% =================
+
+\title{レポートタイトル}
+\author{氏名}
+\date{\today}
+
+\section{実行結果}
+\begin{verbatim}
+  cat : ファイルの中身を確認する
+  echo : 文字列を出力する
+
+  echo "test" > flag.txt　: "test" を flag.txt に書き込む
+  
+
+
+\end{verbatim}
+
+
+\end{document}
