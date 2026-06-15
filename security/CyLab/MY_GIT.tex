@@ -32,7 +32,7 @@
 \author{氏名}
 \date{\today}
 
-\section{実行結果}
+\section{メモ}
 \begin{verbatim}
   cat : ファイルの中身を確認する
   echo : 文字列を出力する
@@ -57,5 +57,88 @@
 
 \end{verbatim}
 
+\section{実行結果}
+\begin{verbatim}
+
+  yukimi-academy@webshell:~$ cd ~/challenge
+yukimi-academy@webshell:~/challenge$ git remote set-url origin ssh://git@foggy-cliff.picoctf.net:54398/git/challenge.git
+yukimi-academy@webshell:~/challenge$ git push
+The authenticity of host '[foggy-cliff.picoctf.net]:54398 ([3.15.249.208]:54398)' can't be established.
+ED25519 key fingerprint is SHA256:Grm7IvZgdCDbXv3DtQ70/6WKHA2q3XhT+sfva8nLT38.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[foggy-cliff.picoctf.net]:54398' (ED25519) to the list of known hosts.
+git@foggy-cliff.picoctf.net's password: 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 265 bytes | 132.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: Author matched and flag.txt found in commit...
+remote: Congratulations! You have successfully impersonated the root user
+remote: Here's your flag: picoCTF{1mp3rs0n4t4_g17_345y_e522152d}
+To ssh://foggy-cliff.picoctf.net:54398/git/challenge.git
+   b4df14d..1c325b4  master -> master
+yukimi-academy@webshell:~/challenge$ cat flag.txt 
+test
+yukimi-academy@webshell:~/challenge$ 
+
+\textbf{行ったこと}
+
+cd ~/challenge
+
+Git リポジトリに移動。
+
+echo test > flag.txt
+
+flag.txt を作成・変更。
+
+git add flag.txt
+git commit -m "update"
+
+flag.txt の変更を commit。
+
+git remote set-url origin ssh://git@foggy-cliff.picoctf.net:54398/git/challenge.git
+
+期限切れだった push 先を、新しいURLに変更。
+
+git push
+
+サーバーへ送信。
+
+大事なところ
+git remote set-url origin ssh://git@foggy-cliff.picoctf.net:54398/git/challenge.git
+
+push 先のGitサーバーURLを変更するコマンドです。
+
+git remote set-url origin ssh://git@foggy-cliff.picoctf.net:54398/git/challenge.git
+
+分解すると：
+
+git remote set-url
+
+登録済みのリモートURLを変更する。
+
+origin
+
+変更するリモート名。普通はメインの接続先。
+
+ssh://git@foggy-cliff.picoctf.net:54398/git/challenge.git
+
+新しい接続先URL。
+
+つまり、古い
+
+:52131
+
+から新しい
+
+:54398
+
+に差し替えた、という意味です。
+
+\end{verbatim}
 
 \end{document}
