@@ -1,0 +1,48 @@
+\documentclass[a4paper,11pt,lualatex,ja=standard]{bxjsarticle}
+
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage{graphicx}
+% url
+\usepackage{hyperref}
+
+% ===== cover command =====
+\newcommand{\cover}[3]{
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \begin{center}
+    {\LARGE #1}\\[2cm]
+    {\Large #2}\\[3cm]
+    {\large 氏名：#3}\\[1cm]
+    {\large 学籍番号：s2510063}
+  \end{center}
+  \newpage
+}
+% =========================
+
+\begin{document}
+
+% ===== cover =====
+\cover{Piece_by_Piece}{CyLab}{yukimi}
+% =================
+
+\title{レポートタイトル}
+\author{氏名}
+\date{\today}
+
+\section{問題文}
+\begin{verbatim}
+  After logging in, you will find multiple file parts in your home directory. These parts need to be combined and extracted to reveal the flag.
+
+SSH to dolphin-cove.picoctf.net:50719 and login as ctf-player with password 6dd28e9b.
+\end{verbatim}
+
+\section{実装コード}
+\begin{verbatim}
+
+  
+\end{verbatim}
+
+\end{document}
