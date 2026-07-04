@@ -1,0 +1,91 @@
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.1.6)  5 JUL 2026 00:21
+ restricted system commands enabled.
+ file:line:error style messages enabled.
+**g:/マイドライブ/github_upload/security/load_map.tex
+(g:/マイドライブ/github_upload/security/load_map.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
+collection.
+luaotfload | conf : Root cache directory is "C:/Users/小林　智輝/AppData/Lo
+cal/MiKTeX/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
+olved path "C:/Program Files/MiKTeX/tex/luatex/luaotfload/fontloader-2023-12-28.
+lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "C:/Users/小林　智輝/AppData/Lo
+cal/MiKTeX/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'.
+(C:/Users/小林　智輝/AppData/Roaming/MiKTeX/tex/latex/bxjscls/bxjsarticle.
+cls
+Document Class: bxjsarticle 2025/06/06 v2.9d BXJS document classes
+("C:/Program Files/MiKTeX/tex/latex/tools/calc.sty"
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count273
+\calc@Bcount=\count274
+\calc@Adimen=\dimen147
+\calc@Bdimen=\dimen148
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count275
+\calc@Cskip=\skip51
+)
+("C:/Program Files/MiKTeX/tex/latex/graphics/keyval.sty"
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+("C:/Program Files/MiKTeX/tex/generic/iftex/iftex.sty"
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+(C:/Users/小林　智輝/AppData/Roaming/MiKTeX/tex/latex/bxjscls/bxjscompat.s
+ty
+Package: bxjscompat 2025/06/06 v2.9d BXJS document classes
+)
+\jsc@mpt=\dimen149
+\jsc@mmm=\dimen150
+\jsZw=\dimen151
+
+(C:/Users/小林　智輝/AppData/Roaming/MiKTeX/tex/latex/type1cm/type1cm.sty
+Package: type1cm 2002/09/05 v0.04 BlueSky/Y&Y Type1 CM font definitions (DPC, p
+atched RF)
+)
+\jsc@smallskipamount=\skip52
+luaotfload | db : Font names database loaded from C:/Users/小林　智輝/AppDa
+ta/Local/MiKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz
+\Cht=\dimen152
+\Cdp=\dimen153
+\Cwd=\dimen154
+\Cvs=\dimen155
+\Chs=\dimen156
+\fullwidth=\dimen157
+
+(C:/Users/小林　智輝/AppData/Roaming/MiKTeX/tex/latex/geometry/geometry.st
+y
+Package: geometry 2020/01/02 v5.

@@ -1,0 +1,130 @@
+\documentclass[a4paper,11pt,lualatex,ja=standard]{bxjsarticle}
+
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage{graphicx}
+% url
+\usepackage{hyperref}
+
+% ===== cover command =====
+\newcommand{\cover}[3]{
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \begin{center}
+    {\LARGE #1}\\[2cm]
+    {\Large #2}\\[3cm]
+    {\large 氏名：#3}\\[1cm]
+    % {\large 学籍番号：s2510063}
+  \end{center}
+  \newpage
+}
+% =========================
+
+\begin{document}
+
+% ===== cover =====
+\cover{CSIRTになるために}{ロードマップ}{小林智輝}
+% =================
+
+\title{レポートタイトル}
+\author{氏名}
+\date{\today}
+
+\section{現状}
+
+\subsection*{現在持っているスキル}
+
+\begin{itemize}
+    \item セキュリティ基礎
+    \begin{itemize}
+        \item 資格学習による基本知識
+        \item CTF（SyLab）で攻撃手法や脆弱性を学習
+    \end{itemize}
+
+    \item プログラミング
+    \begin{itemize}
+        \item Pythonによる実装
+    \end{itemize}
+
+    \item OS・開発
+    \begin{itemize}
+        \item Linuxの基本操作
+        \item AI・GPU関連の研究開発
+    \end{itemize}
+\end{itemize}
+
+\section{課題}
+
+\begin{itemize}
+    \item ネットワークの知識が不足している
+    \item ログ・通信解析の経験が少ない
+    \item SIEMやEDRなど実務ツールを扱った経験がない
+    \item インシデント対応の一連の流れを経験していない
+    \item ブルーチームの実践経験が不足している
+\end{itemize}
+
+\newpage
+\section{行うこと}
+
+\subsection*{1. IT基礎（1〜3か月）}
+
+\subsubsection*{目的}
+ネットワーク・OSの基礎を身につける。
+
+\subsubsection*{具体的に行うこと}
+
+\begin{itemize}
+    \item Linuxを仮想環境に構築する
+    \item Linuxコマンド（ls, grep, find, chmodなど）を習得する
+    \item DNS・HTTP・HTTPS・TCP/IPの通信の流れを学ぶ
+    \item WiresharkでWebアクセス時の通信をキャプチャして解析する
+    \item Pythonでログ集計ツールを作成する
+\end{itemize}
+
+\subsection*{2. セキュリティ基礎（2〜4か月）}
+
+\subsubsection*{目的}
+攻撃と防御の仕組みを理解する。
+
+\subsubsection*{具体的に行うこと}
+
+\begin{itemize}
+    \item DVWAでSQL InjectionやXSSを試す
+    \item TryHackMeのWeb Securityルームを進める
+    \item HTTPS・証明書・ハッシュ・暗号方式を学ぶ
+    \item Security+や情報処理安全確保支援士の問題を解く
+\end{itemize}
+
+\subsection*{3. ログ・通信解析（3〜4か月）}
+
+\subsubsection*{目的}
+インシデントを調査できるようになる。
+
+\subsubsection*{具体的に行うこと}
+
+\begin{itemize}
+    \item Sysmonを導入してイベントログを取得する
+    \item Windowsイベントログを確認する
+    \item WiresharkでDNS・HTTP・HTTPS通信を解析する
+    \item Splunkでログ検索・可視化を行う
+    \item 「いつ・誰が・どこへ通信したか」を調査する演習を行う
+\end{itemize}
+
+\subsection*{4. ブルーチーム演習（5〜6か月）}
+
+\subsubsection*{目的}
+CSIRT業務を体験する。
+
+\subsubsection*{具体的に行うこと}
+
+\begin{itemize}
+    \item TryHackMeのBlue Teamルームを解く
+    \item Blue Team Labs Onlineでログ解析演習を行う
+    \item LetsDefendでSOC業務を体験する
+    \item Splunkでインシデント調査を行う
+    \item マルウェア感染シナリオを調査し、レポートを作成する
+\end{itemize}
+
+\end{document}
